@@ -26,16 +26,13 @@
                     <img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" alt="" style="height:35px;">
                 </a> -->
             <div class="item">
-                <div class="ui primary button">Sign up</div>
+                <a class="ui primary button" href="http://localhost/BuSocilaNetwork/Pages/Signin.php">Sign up</a>
             </div>
             <div class="item">
-                <div class="ui button">Log-in</div>
+                <a class="ui button" href="http://localhost/BuSocilaNetwork/Pages/Signin.php">Log-in</a>
             </div>
 
         </div>
     </div>
 </div>
 </div> 
-
-
-
