@@ -26,7 +26,7 @@
                     <img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" alt="" style="height:35px;">
                 </a> -->
             <div class="item">
-                <a class="ui primary button" href="http://localhost/BuSocilaNetwork/Pages/Signin.php">Sign up</a>
+                <a class="ui primary button" href="http://localhost/BuSocilaNetwork/Pages/Signup.php">Sign up</a>
             </div>
             <div class="item">
                 <a class="ui button" href="http://localhost/BuSocilaNetwork/Pages/Signin.php">Log-in</a>
