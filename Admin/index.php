@@ -8,44 +8,15 @@
 </head>
 
 <body>
+	<!-- Header Area Start -->
+	<?php include("./Components/Header.php"); ?>
+	<!-- Header Area End -->
 
-	<div class="ui top attached demo menu">
-		<a class="item sidebar-toggle">
-			<i class="sidebar icon"></i> Menu
-		</a>
-		<div class="ui right floated simple dropdown item">Saeid
-			<i class="dropdown icon"></i>
-			<div class="menu">
-				<a href="#" class="item"><i class="setting icon"></i>Edit your profile</a>
-				<a href="#" class="item"><i class="sign out icon"></i>Logout</a>
-			</div>
-		</div>
-
-	</div>
-
-	<div class="ui bottom attached segment pushable">
-		<div class="ui inverted left vertical sidebar menu header">
-			<a class="item " href="#">
-				<img class="ui tiny circular image" src="./../Images/muhammadsaeid.jpg" alt="" style="height: 80px;">
-				<h4 class="ui grey header">Muhammad Saeid</h4>
-				<!-- <p>Sign Out</p> -->
-			</a>
-			<a class="item">
-				<i class="block layout icon"></i> Dashboard
-			</a>
-			<a class="item">
-				<i class="block layout icon"></i> Post
-			</a>
-			<a class="item">
-				<i class="smile icon"></i> Notice Board
-			</a>
-			<a class="item">
-				<i class="smile icon"></i> Contact
-			</a>
-		</div>
+	<div class="ui bottom segment">
+		
 		<div class="pusher">
 			<div class="ui basic segment">
-				<h3 class="ui header">Lowongan</h3>
+				<h3 class="ui header">Bu Social Community</h3>
 				<!-- content -->
 				<table class="ui celled striped table">
 					<thead>
@@ -127,7 +98,7 @@
 
 		</div>
 	</div>
-	</div>
+	<!-- </div> -->
 
 	<script src="./../Components/Dist/Jquery-3.1.1.min.js"></script>
 	<script src="./../Components/Dist/semantic.min.js"></script>
