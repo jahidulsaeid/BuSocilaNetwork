@@ -1,8 +1,9 @@
 <div class="ui inverted segment main-menu">
     <div class="ui inverted secondary menu container">
-        <a class="item">
+        <a class="item" href="http://localhost/BuSocilaNetwork/">
             Home
         </a>
+
         <a class="item">
             <i class="icon users"></i> Friends
             <div class="floating ui teal label">22</div>
@@ -22,17 +23,34 @@
             Contact us
         </a>
         <div class="right menu">
-            <!-- <a class="item p0">
-                    <img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" alt="" style="height:35px;">
-                </a> -->
-            <div class="item">
+            <a class="item profileItem p0">
+                <!-- <img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" alt="" style="height:35px;"> -->
+
+                <div class="ui floating icon dropdown floating">
+                    <div class="text">
+                        <img class="ui large circular image" src="./Images/muhammadsaeid.jpg" alt=""
+                            style="height:35px;">
+                        Jenny Hess
+                    </div>
+                    <i class="dropdown icon"></i>
+                    <div class="menu">
+                        <div class="item">Index</div>
+                        <div class="item">Starred</div>
+                        <div class="item">Sent Mail</div>
+                        <div class="item">Drafts (143)</div>
+                        <div class="item">Spam (1009)</div>
+                        <div class="item">Trash</div>
+                    </div>
+                </div>
+            </a>
+            <!-- <div class="item">
                 <a class="ui primary button" href="http://localhost/BuSocilaNetwork/Pages/Signup.php">Sign up</a>
             </div>
             <div class="item">
                 <a class="ui button" href="http://localhost/BuSocilaNetwork/Pages/Signin.php">Log-in</a>
-            </div>
+            </div> -->
 
         </div>
     </div>
 </div>
-</div> 
+</div>
