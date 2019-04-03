@@ -97,7 +97,7 @@ $(document)
                             {
                                 type: 'email',
                                 prompt: 'Please enter a valid e-mail'
-                            }
+                            },
                         ]
                     },
                     password: {
@@ -158,8 +158,6 @@ $(document)
             });
     });
 // Sign Up Validation End
-
-// DropDown
 $(document).ready(function () {
     $('.ui.dropdown').dropdown();
 });

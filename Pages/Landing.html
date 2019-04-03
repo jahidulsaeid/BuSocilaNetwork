@@ -36,7 +36,8 @@
                     <h2 class="ui inverted header" style="font-family: 'Raleway', sans-serif;font-weight:300">Follow us
                     </h2>
                     <div class="ui inverted link list">
-                        <a href="https://www.facebook.com/BangladeshUniversityBd" class="ui circular facebook icon button">
+                        <a href="https://www.facebook.com/BangladeshUniversityBd"
+                            class="ui circular facebook icon button">
                             <i class="facebook icon"></i>
                         </a>
                         <a href="" class="ui circular twitter icon button">
@@ -54,7 +55,7 @@
 
             </div>
         </div>
-        <div class="column signInArea" style="background: #f4f7f6!important; display: none">
+        <div class="column signInArea" style="background: #f4f7f6!important; ">
             <div class="ui middle aligned center aligned grid ">
                 <div class="column p100" style=" position: absolute;top: 15%; right: 0px">
                     <h2 class="ui teal image header">
@@ -90,7 +91,7 @@
                 </div>
             </div>
         </div>
-        <div class="column p50 signUpArea" style="background: #f4f7f6!important;">
+        <div class="column p50 signUpArea" style="background: #f4f7f6!important;display: none;">
             <!-- Model area start -->
             <h2 class="ui teal image header center aligned grid mt20">
                 <!-- <img src="./../Images/muhammadsaeid.jpg" class="image"> -->
@@ -113,7 +114,7 @@
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="user icon"></i>
-                                        <input type="password" name="surname" placeholder="Last Name">
+                                        <input type="text" name="surname" placeholder="Last Name">
                                     </div>
                                 </div>
                             </div>
@@ -134,9 +135,12 @@
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" name="email" placeholder="E-mail address">
+                                    <input id="emailAddress" type="email" size="64" maxLength="64"
+                                        placeholder="username@bu.edu.com" pattern=".+@bu.edu.com"
+                                        title="Please Enter Bu provided email address" name="email">
                                 </div>
                             </div>
+
 
                             <div class="field">
                                 <div class="ui selection dropdown ">
@@ -249,7 +253,10 @@
                             </div>
 
 
-                            <div class="ui fluid large teal submit button">Login</div>
+                            <div class="ui fluid large submit">
+                                <input type="submit" class="ui fluid large teal button" value="Login">
+                            </div>
+                            <!-- <div class="ui fluid large teal submit button">Login</div> -->
                         </div>
 
                         <div class="ui error message"></div>
@@ -275,21 +282,9 @@
     <script src="../Components/Dist/semantic.min.js"></script>
     <!-- Custom-Js-Files -->
     <script src="../Components/Dist/Custom.js"></script>
+    <!-- DropDown js -->
+    <script src="./../Components/Dist/Dropdown.js"></script>
     <script>
-        // Signin and SignUP Hiding Jquery
-
-        $(function () {
-            $('.loginHere').click(function () {
-                $('.signInArea').show();
-                $('.signUpArea').hide();
-            });
-
-            $('.signUpHere').click(function () {
-                $('.signInArea').hide();
-                $('.signUpArea').show();
-            });
-        });
-        // Signin and SignUP Hiding Jquery
     </script>
 </body>
 
