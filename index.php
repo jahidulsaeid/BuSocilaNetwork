@@ -61,12 +61,12 @@
                             <h1 style="font-family: 'Raleway', sans-serif;font-weight:300">Log-in to your account</h1>
                         </div>
                     </h2>
-                    <form class="ui large form signin">
+                    <form class="ui large form signin" action="./inc/Signin.php" method="POST">
                         <div class="ui segment">
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" name="email" placeholder="E-mail address">
+                                    <input type="text" placeholder="E-mail address" name="emailid">
                                 </div>
                             </div>
                             <div class="field">
