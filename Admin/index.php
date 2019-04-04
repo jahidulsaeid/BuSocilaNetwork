@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -31,7 +32,7 @@
 							<th>Gender</th>
 							<th>Birth Of Day</th>
 							<th>Profile Pic</th>
-							<th>Delete</th>
+							<th>Delete/Re</th>
 						</tr>
 					</thead>
 					<tbody>

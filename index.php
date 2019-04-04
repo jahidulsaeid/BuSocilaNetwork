@@ -7,17 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Bu Socila NetWork</title>
     <!-- Semantic min Css -->
-    <link rel="stylesheet" href="../Components/Dist/semantic.min.css">
+    <link rel="stylesheet" href="./Components/Dist/semantic.min.css">
     <!-- margin-padding min css -->
-    <link rel="stylesheet" href="../Components/Dist/margin.padding.min.css">
+    <link rel="stylesheet" href="./Components/Dist/margin.padding.min.css">
     <!-- Custom Css -->
-    <link rel="stylesheet" href="../Home.css">
+    <link rel="stylesheet" href="./Home.css">
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,500,700" rel="stylesheet">
     <style>
-        .ui.action.input input[type="file"] {
-            display: none;
-        }
     </style>
 </head>
 
@@ -26,7 +23,7 @@
         <div class="column teal center aligned p60" style="height:102vh;">
 
             <div style="position: absolute;top: 27%;">
-                <img class="ui small image centered" src="./../Images/BU.png" alt="">
+                <img class="ui small image centered" src="./Images/BU.png" alt="">
 
                 <h1 class="m0" style="font-family: 'Raleway', sans-serif;font-weight:300">Bu Community Network</h1>
                 <h3 class="mt10" style="font-family: 'Raleway', sans-serif;font-weight:300">Lorem ipsum dolor sit, amet
@@ -37,16 +34,16 @@
                     </h2>
                     <div class="ui inverted link list">
                         <a href="https://www.facebook.com/BangladeshUniversityBd"
-                            class="ui circular facebook icon button">
+                            class="ui circular facebook icon button" target="_blank">
                             <i class="facebook icon"></i>
                         </a>
-                        <a href="" class="ui circular twitter icon button">
+                        <a href="" class="ui circular twitter icon button" target="_blank">
                             <i class="twitter icon"></i>
                         </a>
-                        <a href="" class="ui circular linkedin icon button">
+                        <a href="" class="ui circular linkedin icon button" target="_blank">
                             <i class="linkedin icon"></i>
                         </a>
-                        <a href="" class="ui circular google plus icon button">
+                        <a href="" class="ui circular google plus icon button" target="_blank">
                             <i class="google plus icon"></i>
                         </a>
                     </div>
@@ -92,29 +89,26 @@
             </div>
         </div>
         <div class="column p50 signUpArea" style="background: #f4f7f6!important;display: none;">
-            <!-- Model area start -->
             <h2 class="ui teal image header center aligned grid mt20">
-                <!-- <img src="./../Images/muhammadsaeid.jpg" class="image"> -->
                 <div class="content">
                     <h1 style="font-family: 'Raleway', sans-serif;font-weight:300">Create your account</h1>
                 </div>
             </h2>
             <div class="ui middle grid">
                 <div class="column">
-
-                    <form class="ui large form">
+                    <form class="ui large form" action="./inc/Signup.php" method="POST" enctype="multipart/form-data">
                         <div class="ui segment">
                             <div class="two fields">
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="user icon"></i>
-                                        <input type="text" name="firstname" placeholder="First Name">
+                                        <input type="text" placeholder="First Name" name="firstname">
                                     </div>
                                 </div>
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="user icon"></i>
-                                        <input type="text" name="surname" placeholder="Last Name">
+                                        <input type="text" placeholder="Last Name" name="lastname">
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +122,7 @@
                                 <div class="field">
                                     <div class="ui left icon input">
                                         <i class="lock icon"></i>
-                                        <input type="password" name="password" placeholder="Re-Password">
+                                        <input type="password" name="repassword" placeholder="Re-Password">
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +131,7 @@
                                     <i class="user icon"></i>
                                     <input id="emailAddress" type="email" size="64" maxLength="64"
                                         placeholder="username@bu.edu.com" pattern=".+@bu.edu.com"
-                                        title="Please Enter Bu provided email address" name="email">
+                                        title="Please Enter Bu provided email address" name="buemail">
                                 </div>
                             </div>
 
@@ -148,8 +142,8 @@
                                     <i class="dropdown icon"></i>
                                     <div class="default text">Gender</div>
                                     <div class="menu">
-                                        <div class="item" data-value="1">Male</div>
-                                        <div class="item" data-value="0">Female</div>
+                                        <div class="item" data-value="Male">Male</div>
+                                        <div class="item" data-value="Female">Female</div>
                                     </div>
                                 </div>
                             </div>
@@ -240,8 +234,8 @@
                             <div class="field">
                                 <div class="ui action input">
                                     <span class="pt10 pr5">Profile Pic : </span>
-                                    <input type="text" placeholder="File 1" readonly name="ppic">
-                                    <input type="file">
+                                    <input type="text" placeholder="Upload Your Profile Picture" readonly name="profilepic">
+                                    <input type="file" style="display:none;" name="profilepic">
                                 </div>
                             </div>
 
@@ -277,13 +271,12 @@
     </div>
 
     <!-- Jquery min Files -->
-    <script src="../Components/Dist/Jquery-3.1.1.min.js"></script>
+    <script src="./Components/Dist/Jquery-3.1.1.min.js"></script>
     <!-- Sematic Min Files -->
-    <script src="../Components/Dist/semantic.min.js"></script>
+    <script src="./Components/Dist/semantic.min.js"></script>
     <!-- Custom-Js-Files -->
-    <script src="../Components/Dist/Custom.js"></script>
-    <!-- DropDown js -->
-    <script src="./../Components/Dist/Dropdown.js"></script>
+    <script src="./Components/Dist/Custom.js"></script>
+
     <script>
     </script>
 </body>

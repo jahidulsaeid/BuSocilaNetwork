@@ -1,8 +1,0 @@
-.stickySidebar {
-    height: 665px!important;
-    position: sticky!important;
-    top: 0px!important;
-}
-a.item.profileItem:hover{
-    background: transparent!important;
-}

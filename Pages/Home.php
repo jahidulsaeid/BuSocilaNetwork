@@ -7,23 +7,20 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Bu Socila NetWork</title>
 	<!-- Semantic min Css -->
-	<link rel="stylesheet" href="./Components/Dist/semantic.min.css">
+	<link rel="stylesheet" href="./../Components/Dist/semantic.min.css">
 	<!-- margin-padding min css -->
-	<link rel="stylesheet" href="./Components/Dist/margin.padding.min.css">
+	<link rel="stylesheet" href="./../Components/Dist/margin.padding.min.css">
 	<!-- Custom Css -->
 	<link rel="stylesheet" href="./Home.css">
 	<style>
-		.ui.transparent.inverted.input>input {
-			color: #fff;
-			opacity: 0.6;
+		.stickySidebar {
+			height: 665px !important;
+			position: sticky !important;
+			top: 0px !important;
 		}
 
-		.ui.transparent.inverted.input>input::-moz-placeholder {
-			color: #fff;
-		}
-
-		.ui.transparent.inverted.input>input:focus {
-			opacity: 0.8;
+		a.item.profileItem:hover {
+			background: transparent !important;
 		}
 	</style>
 
@@ -31,7 +28,7 @@
 
 <body>
 	<!-- Header Area Start -->
-	<?php include("./Components/Header/Header.php"); ?>
+	<?php include("./../Components/Header/Header.php"); ?>
 	<!-- Header Area End -->
 	<div class="ui grid container">
 
@@ -39,29 +36,29 @@
 			<div class="four wide column ui secondary segment m0 stickySidebar">
 				<div class="ui large vertical menu">
 					<a class="item">
-					  <div class="ui small teal label">1</div>
-					  Inbox
+						<div class="ui small teal label">1</div>
+						Inbox
 					</a>
 					<a class="item">
-					  <div class="ui small label">51</div>
-					  Spam
+						<div class="ui small label">51</div>
+						Spam
 					</a>
 					<a class="item active">
-					  <div class="ui small label">1</div>
-					  Updates
+						<div class="ui small label">1</div>
+						Updates
 					</a>
 					<div class="item">
-					  <div class="ui icon input">
-						<input type="text" placeholder="Search mail...">
-						<i class="search icon"></i>
-					  </div>
+						<div class="ui icon input">
+							<input type="text" placeholder="Search mail...">
+							<i class="search icon"></i>
+						</div>
 					</div>
-				  </div>
+				</div>
 			</div>
 			<div class="ui eight wide column ">
 
 				<div class="ui grid segment mt0">
-					<div class="six wide column"><img class="ui mini circular image" src="./Images/muhammadsaeid.jpg"
+					<div class="six wide column"><img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg"
 							alt="" style="height:35px;"></div>
 					<div class="ten wide column right aligned"><button class="ui button teal create_btn" type="button"
 							id="postForm">Create Post</button>
@@ -75,7 +72,7 @@
 						<div class="right floated meta pt5"><span>15 hours ago</span>
 							<!-- <a href=""><i class="icon ellipsis horizontal"></i></a> -->
 						</div>
-						<img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" alt=""
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" alt=""
 							style="height:35px;">
 						<b>Jahidul Islam</b>
 
@@ -94,7 +91,7 @@
 					</div>
 
 					<div class="image">
-						<img src="./Images/muhammadsaeid.jpg" alt="">
+						<img src="./../Images/muhammadsaeid.jpg" alt="">
 					</div>
 					<div class="content">
 						<span class="right floated">
@@ -111,7 +108,7 @@
 							<div class="ui comments mb0">
 								<div class="comment">
 									<a class="avatar">
-										<img src="./Images/muhammadsaeid.jpg">
+										<img src="./../Images/muhammadsaeid.jpg">
 									</a>
 								</div>
 							</div>
@@ -125,7 +122,7 @@
 
 					<div class="comment">
 						<a class="avatar">
-							<img src="./Images/muhammadsaeid.jpg">
+							<img src="./../Images/muhammadsaeid.jpg">
 						</a>
 						<div class="content">
 							<a class="author">Matt</a>
@@ -142,7 +139,7 @@
 					</div>
 					<div class="comment">
 						<a class="avatar">
-							<img src="./Images/muhammadsaeid.jpg">
+							<img src="./../Images/muhammadsaeid.jpg">
 						</a>
 						<div class="content">
 							<a class="author">Elliot Fu</a>
@@ -159,7 +156,7 @@
 						<div class="comments">
 							<div class="comment">
 								<a class="avatar">
-									<img src="./Images/muhammadsaeid.jpg">
+									<img src="./../Images/muhammadsaeid.jpg">
 								</a>
 								<div class="content">
 									<a class="author">Jenny Hess</a>
@@ -178,7 +175,7 @@
 					</div>
 					<div class="comment">
 						<a class="avatar">
-							<img src="./Images/muhammadsaeid.jpg">
+							<img src="./../Images/muhammadsaeid.jpg">
 						</a>
 						<div class="content">
 							<a class="author">Joe Henderson</a>
@@ -198,31 +195,24 @@
 				<!-- Model area start -->
 
 				<div class="ui modal">
-					<div class="header ui center aligned">This is Header</div>
-					<div class="content">
-						<form class="ui form">
+					
+						<div class="header ui center aligned">Create Post</div>
+						<div class="content">
+								<form class="ui form">
 							<div class="field">
-								<label>First Name</label>
-								<input type="text" name="first-name" placeholder="First Name">
+								<textarea placeholder="What's on your mind, Muhammad?"></textarea>
 							</div>
-							<div class="field">
-								<label>Last Name</label>
-								<input type="text" name="last-name transparent" placeholder="Last Name">
-							</div>
-							<div class="field">
-								<div class="ui checkbox">
-									<input type="checkbox" tabindex="0" class="hidden">
-									<label>I agree to the Terms and Conditions</label>
-								</div>
-							</div>
-							<button class="ui button" type="submit">Submit</button>
+
 						</form>
-					</div>
-					<div class="actions">
-						<div class="ui approve button">Approve</div>
+						</div>
+						<div class="actions">
+							<!-- <div class="ui approve button">Approve</div>
 						<div class="ui button">Neutral</div>
-						<div class="ui cancel button">Cancel</div>
-					</div>
+						<div class="ui cancel button">Cancel</div> -->
+							<!-- <div class="ui cancel button">Cancel</div> -->
+							<button type="submit" class="ui approve button blue">Approve</button>
+						</div>
+					
 				</div>
 
 				<!-- Model area end -->
@@ -234,7 +224,7 @@
 						<div class="right floated content">
 							<div class="ui button">Add</div>
 						</div>
-						<img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" style="height:35px;">
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
 							<div class="header">Helen</div>
 						</div>
@@ -243,7 +233,7 @@
 						<div class="right floated content">
 							<div class="ui button">Add</div>
 						</div>
-						<img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" style="height:35px;">
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
 							<div class="header">Helen</div>
 						</div>
@@ -252,7 +242,7 @@
 						<div class="right floated content">
 							<div class="ui button">Add</div>
 						</div>
-						<img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" style="height:35px;">
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
 							<div class="header">Helen</div>
 						</div>
@@ -261,7 +251,7 @@
 						<div class="right floated content">
 							<div class="ui button">Add</div>
 						</div>
-						<img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" style="height:35px;">
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
 							<div class="header">Helen</div>
 						</div>
@@ -270,7 +260,7 @@
 						<div class="right floated content">
 							<div class="ui button">Add</div>
 						</div>
-						<img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" style="height:35px;">
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
 							<div class="header">Helen</div>
 						</div>
@@ -286,16 +276,16 @@
 
 
 	<!-- Footer Area Start -->
-	<?php include("./Components/Footer/Footer.php"); ?>
+	<?php include("./../Components/Footer/Footer.php"); ?>
 	<!-- Footer Area End -->
 
 
 	<!-- Jquery min Files -->
-	<script src="./Components/Dist/Jquery-3.1.1.min.js"></script>
+	<script src="./../Components/Dist/Jquery-3.1.1.min.js"></script>
 	<!-- Sematic Min Files -->
-	<script src="./Components/Dist/semantic.min.js"></script>
+	<script src="./../Components/Dist/semantic.min.js"></script>
 	<!-- Custom-Js-Files -->
-	<script src="./Components/Dist/Custom.js"></script>
+	<script src="./../Components/Dist/Custom.js"></script>
 	<script>
 		$(function () {
 			$("#noticeBoardForm").click(function () {
