@@ -1,15 +1,15 @@
 <?php
 include('conn.php');
-echo $firstname = $_POST['firstname'];
-echo $lastname = $_POST['lastname'];
-echo $pass = $_POST['password'];
-echo $repass = $_POST['repassword'];
-echo $email = $_POST['buemail'];
-echo $gender = $_POST['gender'];
-echo $birthofday = $_POST['BDay'] . '-' . $_POST['BMonth'] . '-' . $_POST['BYear'];
+$firstname = $_POST['firstname'];
+$lastname = $_POST['lastname'];
+$pass = $_POST['password'];
+$repass = $_POST['repassword'];
+$email = $_POST['buemail'];
+$gender = $_POST['gender'];
+$birthofday = $_POST['BDay'] . '-' . $_POST['BMonth'] . '-' . $_POST['BYear'];
 
-echo $p_pic = $_FILES['profilepic']['name'];
-echo $p_tmp = $_FILES['profilepic']['tmp_name'];
+$p_pic = $_FILES['profilepic']['name'];
+$p_tmp = $_FILES['profilepic']['tmp_name'];
 
 move_uploaded_file($p_tmp, '../Images/Profilepic/' . $p_pic);
 

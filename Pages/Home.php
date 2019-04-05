@@ -1,3 +1,4 @@
+<?php session_start();  ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,7 +75,7 @@
 						</div>
 						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" alt=""
 							style="height:35px;">
-						<b>Jahidul Islam</b>
+						<b><?php echo $_SESSION['Firstname']; echo $_SESSION['Email']; ?></b>
 
 
 

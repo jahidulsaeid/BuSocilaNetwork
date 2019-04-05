@@ -22,28 +22,39 @@
         <a class="item">
             Contact us
         </a>
-        <div class="right menu">
-            <a class="item profileItem p0">
-                <!-- <img class="ui mini circular image" src="./Images/muhammadsaeid.jpg" alt="" style="height:35px;"> -->
-
-                <div class="ui floating icon dropdown floating">
-                    <div class="text">
-                        <img class="ui large circular image" src="./../Images/muhammadsaeid.jpg" alt="" style="height:35px;">
-                        Jenny Hess
-                    </div>
-                    <i class="dropdown icon"></i>
-                    <div class="menu">
-                        <div class="item">Index</div>
-                        <div class="item">Starred</div>
-                        <div class="item">Sent Mail</div>
-                        <div class="item">Drafts (143)</div>
-                        <div class="item">Spam (1009)</div>
-                        <div class="item">Trash</div>
-                    </div>
+        <!-- <div class="right menu">
+            <div class="ui inline dropdown">
+                <div class="text m8">
+                    <img class="ui mini image mt0 circular" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
+                    <b>Jenny Hess</b> 
                 </div>
-            </a>
+                <i class="dropdown icon"></i>
+                <div class="menu">
+                    <a class="item" href="">User Profile</a>
+                    <a class="item" href="">Edit Profile</a>
+                    <a class="item" href="./../inc/Logout.php">Logout</a>
+                </div>
+            </div>
+        </div> -->
 
+        <div class="ui text menu right">
+
+            <div class="ui right dropdown item">
+                <div class="item dropdown">
+                    <img class="ui circular image mini" src="./../Images/muhammadsaeid.jpg">
+                </div>
+                <a class=" item dropdown">
+                    Browse Courses
+                    <i class="dropdown icon"></i>
+                </a>
+                <div class="menu">
+                    <div class="item">Applications</div>
+                    <div class="item">International Students</div>
+                    <div class="item">Scholarships</div>
+                </div>
+            </div>
         </div>
+
     </div>
 </div>
 </div>

@@ -1,109 +1,120 @@
+<?php
+
+
+?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-	<title>Admin Template</title>
-	<link rel="stylesheet" href="../Components/Dist/semantic.min.css">
-	<link rel="stylesheet" type="text/css" href="css/custom.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Bu Socila NetWork</title>
+    <!-- Semantic min Css -->
+    <link rel="stylesheet" href="./../Components/Dist/semantic.min.css">
+    <!-- margin-padding min css -->
+    <link rel="stylesheet" href="./../Components/Dist/margin.padding.min.css">
 </head>
 
 <body>
-	<!-- Header Area Start -->
-	<?php include("./Components/Header.php"); ?>
-	<!-- Header Area End -->
+    <!-- From are Start-->
 
-	<div class="ui bottom segment">
-		
-		<div class="pusher">
-			<div class="ui basic segment">
-				<h3 class="ui header">Bu Social Community</h3>
-				<!-- content -->
-				<table class="ui celled striped table">
-					<thead>
-						<tr>
-							<th class="center aligned" colspan="8">User Information</th>
-						</tr>
-						<tr>
-							<th width="40">ID</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Password</th>
-							<th>Gender</th>
-							<th>Birth Of Day</th>
-							<th>Profile Pic</th>
-							<th>Delete/Re</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>1</td>
-							<td>Jahidul islam</td>
-							<td>Saeid@bu.edu.bd</td>
-							<td>saeid1234</td>
-							<td>Male</td>
-							<td>12-03-2017</td>
-							<td>
-								<img class="ui avatar image" src="./../Images/muhammadsaeid.jpg" alt="">
-							</td>
-							<td>
-								<a href="#"><i class="trash icon" title="Hapus"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Jahidul islam</td>
-							<td>Saeid@bu.edu.bd</td>
-							<td>saeid1234</td>
-							<td>Male</td>
-							<td>12-03-2017</td>
-							<td>
-								<img class="ui avatar image" src="./../Images/muhammadsaeid.jpg" alt="">
-							</td>
-							<td>
-								<a href="#"><i class="trash icon" title="Hapus"></i></a>
-							</td>
-						</tr>
-						<tr>
-							<td>1</td>
-							<td>Jahidul islam</td>
-							<td>Saeid@bu.edu.bd</td>
-							<td>saeid1234</td>
-							<td>Male</td>
-							<td>12-03-2017</td>
-							<td>
-								<img class="ui avatar image" src="./../Images/muhammadsaeid.jpg" alt="">
-							</td>
-							<td>
-								<a href="#"><i class="trash icon" title="Hapus"></i></a>
-							</td>
-						</tr>
+    <div class="ui grid container p50 pt100">
+        <div class="four wide column">
 
-					</tbody>
-					<tfoot>
-						<tr>
-							<th colspan="8">
-								<div class="ui right floated pagination menu">
-									<a class="icon item"><i class="left chevron icon"></i></a>
-									<a class="item">1</a>
-									<a class="item">2</a>
-									<a class="item">3</a>
-									<a class="item">4</a>
-									<a class="icon item"><i class="right chevron icon"></i></a>
-								</div>
-							</th>
-						</tr>
-					</tfoot>
-				</table>
-			</div>
+        </div>
+        <div class="ui eight wide column ">
+            <!-- Model area start -->
+            <div class="ui middle aligned center aligned grid">
+                <div class="column">
+                    <h2 class="ui teal image header">
+                        <!-- <img src="assets/images/logo.png" class="image"> -->
+                        <div class="content">
+                            Admin Login
+                        </div>
+                    </h2>
+                    <form class="ui large form" action="./inc/signin.php" method="POST">
+                        <div class="ui segment">
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="user icon"></i>
+                                    <input type="text" name="emailid" placeholder="E-mail address">
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui left icon input">
+                                    <i class="lock icon"></i>
+                                    <input type="password" name="password" placeholder="Password">
+                                </div>
+                            </div>
+                            <div class="ui fluid large teal submit button">Login</div>
+                        </div>
 
-		</div>
-	</div>
-	<!-- </div> -->
+                        <div class="ui error message"></div>
 
-	<script src="./../Components/Dist/Jquery-3.1.1.min.js"></script>
-	<script src="./../Components/Dist/semantic.min.js"></script>
-	<script type="text/javascript" src="js/custom.js"></script>
+                    </form>
+
+               
+                </div>
+            </div>
+
+
+
+            <!-- Model area end -->
+
+        </div>
+
+
+        <div class="four wide column"></div>
+    </div>
+
+
+    <!-- From are End-->
+
+    <!-- Jquery min Files -->
+    <script src="./../Components/Dist/Jquery-3.1.1.min.js"></script>
+    <!-- Sematic Min Files -->
+    <script src="./../Components/Dist/semantic.min.js"></script>
+    <!-- Custom-Js-Files -->
+    <script src="./../Components/Dist/Custom.js"></script>
+    <script>
+        // Sign in Form Start
+        $(document)
+            .ready(function() {
+                $('.ui.form')
+                    .form({
+                        fields: {
+                            email: {
+                                identifier: 'email',
+                                rules: [{
+                                        type: 'empty',
+                                        prompt: 'Please enter your e-mail'
+                                    },
+                                    {
+                                        type: 'email',
+                                        prompt: 'Please enter a valid e-mail'
+                                    }
+                                ]
+                            },
+                            password: {
+                                identifier: 'password',
+                                rules: [{
+                                        type: 'empty',
+                                        prompt: 'Please enter your password'
+                                    },
+                                    {
+                                        type: 'length[6]',
+                                        prompt: 'Your password must be at least 6 characters'
+                                    }
+                                ]
+                            }
+                        }
+                    });
+            });
+
+        // Sign in Form End
+    </script>
 </body>
 
 </html>

@@ -13,7 +13,7 @@
 	</div>
 	<div class="ui inverted left vertical sidebar menu header">
 		<a class="item " href="#">
-			<img class="ui tiny circular image" src="./../Images/muhammadsaeid.jpg" alt="" style="height: 80px;">
+			<img class="ui tiny circular image" src="./../../Images/muhammadsaeid.jpg" alt="" style="height: 80px;">
 			<h4 class="ui grey header">Muhammad Saeid</h4>
 			<!-- <p>Sign Out</p> -->
 		</a>
