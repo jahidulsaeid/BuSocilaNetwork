@@ -78,130 +78,97 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 
 				<?php
-				
-				
-				include ('../inc/conn.php');
 
-				$post_data = mysqli_query($connect,"SELECT * FROM user_post ORDER BY post_id DESC");
 
-				while($post_slice = mysqli_fetch_array($post_data)):?>
+				include('../inc/conn.php');
 
-				<div class="ui card fluid">
-					<div class="content">
-						<div class="right floated meta pt5"><span><?php echo $post_slice['post_date']; ?></span>
+				$post_data = mysqli_query($connect, "SELECT * FROM user_post ORDER BY post_id DESC");
+
+
+
+				while ($post_slice = mysqli_fetch_array($post_data)) : ?>
+
+
+					<?php $postcommid = $post_slice['post_id']; ?>
+
+					<div class="ui card fluid">
+						<div class="content">
+							<div class="right floated meta pt5"><span><?php echo $post_slice['post_date']; ?></span>
+							</div>
+							<img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $post_slice['user_image']; ?>" alt="" style="height:35px;">
+							<b> <?php echo $post_slice['puser_name']; ?></b>
+
+
+
+							<div class="description pt10" style="font-weight:600">
+								<p><?php echo $post_slice['user_post']; ?></p>
+							</div>
 						</div>
-						<img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $post_slice['user_image']; ?>" alt="" style="height:35px;">
-						<b> <?php echo $post_slice['puser_name']; ?></b>
 
-
-
-						<div class="description pt10" style="font-weight:600">
-							<p><?php echo $post_slice['user_post']; ?></p>
+						<div class="image">
+							<img src="./../Images/Postimage/<?php echo $post_slice['post_image']; ?>" alt="">
 						</div>
-					</div>
+						<div class="content">
+							<span class="right floated">
+								<i class="comment icon"></i>
+								3 comments
 
-					<div class="image">
-						<img src="./../Images/Postimage/<?php echo $post_slice['post_image']; ?>" alt="">
-					</div>
-					<div class="content">
-						<span class="right floated">
-							<i class="comment icon"></i>
-							3 comments
+							</span>
+							<i class="heart outline like icon"></i>
+							17 likes
 
-						</span>
-						<i class="heart outline like icon"></i>
-						17 likes
+						</div>
 
-					</div>
-					<div class="extra content">
-						<div class="ui large transparent left icon input">
-							<div class="ui comments mb0">
-								<div class="comment">
-									<a>
-										<img class="ui mini circular image" style="height:35px;" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>">
-									</a>
+						<div class="extra content">
+							<div class="ui fluid transparent left icon input">
+								<div class="ui comments mb0">
+									<form action="../inc/comment.php" method="POST">
+										<div class="comment">
+											<a>
+												<img class="ui mini circular image" style="height:35px;" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>">
+											</a>
+										</div>
 								</div>
-							</div>
-							<input type="text" placeholder="Add Comment..." autocomplete="off">
-						</div>
-					</div>
-				</div>
-	<?php endwhile;?>
+								<input type="text" placeholder="Add Comment..." autocomplete="off" name="commentcont" id="commentarea">
+								<input type="hidden" value="<?php echo $postcommid; ?>" name="cpostid">
+								</form>
 
-
-				<div class="ui comments">
-
-					<div class="comment">
-						<a class="avatar">
-							<img src="./../Images/muhammadsaeid.jpg">
-						</a>
-						<div class="content">
-							<a class="author">Matt</a>
-							<div class="metadata">
-								<span class="date">Today at 5:42PM</span>
-							</div>
-							<div class="text">
-								How artistic!
-							</div>
-							<div class="actions">
-								<a class="reply">Reply</a>
 							</div>
 						</div>
 					</div>
-					<div class="comment">
-						<a class="avatar">
-							<img src="./../Images/muhammadsaeid.jpg">
-						</a>
-						<div class="content">
-							<a class="author">Elliot Fu</a>
-							<div class="metadata">
-								<span class="date">Yesterday at 12:30AM</span>
-							</div>
-							<div class="text">
-								<p>This has been very useful for my research. Thanks as well!</p>
-							</div>
-							<div class="actions">
-								<a class="reply">Reply</a>
-							</div>
-						</div>
-						<div class="comments">
+					<!-- here is the post area end -->
+
+					<?php
+
+					$pcomment_data = mysqli_query($connect, "SELECT * FROM post_comment WHERE commentpost_id = '$postcommid' ORDER BY pcomment_id DESC");
+
+					while ($pcomment_slice = mysqli_fetch_array($pcomment_data)) :
+
+						?>
+
+
+						<div class="ui comments">
 							<div class="comment">
 								<a class="avatar">
-									<img src="./../Images/muhammadsaeid.jpg">
+									<img src="./../Images/Profilepic/<?php echo $pcomment_slice['pcomment_uimg']; ?>">
 								</a>
 								<div class="content">
-									<a class="author">Jenny Hess</a>
+									<a class="author"><?php echo $pcomment_slice['pcomment_user']; ?></a>
 									<div class="metadata">
-										<span class="date">Just now</span>
+										<span class="date">Today at 5:42PM</span>
 									</div>
 									<div class="text">
-										Elliot you are always so right :
+										<?php echo $pcomment_slice['pcomment_cont']; ?>
 									</div>
 									<div class="actions">
-										<a class="reply">Reply</a>
+										<a class="reply"><label for="commentarea" style="cursor: pointer;">Reply</label></a>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
-					<div class="comment">
-						<a class="avatar">
-							<img src="./../Images/muhammadsaeid.jpg">
-						</a>
-						<div class="content">
-							<a class="author">Joe Henderson</a>
-							<div class="metadata">
-								<span class="date">5 days ago</span>
-							</div>
-							<div class="text">
-								Dude, this is awesome. Thanks so much
-							</div>
-							<div class="actions">
-								<a class="reply">Reply</a>
-							</div>
-						</div>
-					</div>
-				</div>
+
+					<?php endwhile; ?>
+				<?php endwhile; ?>
 
 				<!-- Model area start -->
 
@@ -219,13 +186,13 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 							<div class="field">
 								<textarea placeholder="What's on your mind, Muhammad?" name="upostcontent"></textarea>
 							</div>
-						
+
 						</div>
-					
-					<div class="actions pr0 pt10">
-						<div class="ui cancel button right floated">Cancel</div>
-						<button type="submit" class="ui submit button blue right floated">Post</button>
-					</div>
+
+						<div class="actions pr0 pt10">
+							<div class="ui cancel button right floated">Cancel</div>
+							<button type="submit" class="ui submit button blue right floated">Post</button>
+						</div>
 					</form>
 				</div>
 
@@ -262,55 +229,38 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 				<!-- Model area end -->
 
 			</div>
+
+			<?php
+
+			$alluser = mysqli_query($connect, "SELECT * FROM user_info ORDER BY id DESC");
+
+			?>
+
+
+
+
 			<div class="four wide column ui secondary segment m0 stickySidebar computer only">
 				<div class="ui middle aligned selection list">
+				<?php while ($alluserslice = mysqli_fetch_array($alluser)) : ?>
 					<div class="item">
+					
 						<div class="right floated content">
-							<div class="ui button">Follow</div>
+							<div class="ui button"><i class="plus icon mr0"></i></div>
 						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
-						<div class="content">
-							<div class="header">Helen</div>
-						</div>
+					
+							<img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $alluserslice['ppic']; ?>" style="height:35px;">
+							<div class="content">
+								<div class="header"><?php echo $alluserslice['fname'] . ' ' . $alluserslice['sname']; ?></div>
+							</div>
+
+						
 					</div>
-					<div class="item">
-						<div class="right floated content">
-							<div class="ui button">Follow</div>
-						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
-						<div class="content">
-							<div class="header">Helen</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="right floated content">
-							<div class="ui button">Follow</div>
-						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
-						<div class="content">
-							<div class="header">Helen</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="right floated content">
-							<div class="ui button">Follow</div>
-						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
-						<div class="content">
-							<div class="header">Helen</div>
-						</div>
-					</div>
-					<div class="item">
-						<div class="right floated content">
-							<div class="ui button">Follow</div>
-						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
-						<div class="content">
-							<div class="header">Helen</div>
-						</div>
-					</div>
+					<?php endwhile; ?>
 				</div>
 			</div>
+
+
+
 		</div>
 	</div>
 

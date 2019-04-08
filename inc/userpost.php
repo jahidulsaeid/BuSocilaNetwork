@@ -15,11 +15,11 @@ move_uploaded_file($user_p_imagetmp, '../Images/postimage/' . $user_p_imagename)
 
 echo $user_p_cont = $_POST['upostcontent'];
 
-echo $post_date = date('F j Y');
+// echo $post_date = date('M t Y');
+echo $post_date = date('D, d M Y');
 
-if($user_p_cont || $user_p_imagename){
-    $upostinsert =  mysqli_query($connect,"INSERT INTO user_post(puser_name,user_image,post_image,user_post,post_date) VALUES('$p_user_name','$p_user_image','$user_p_imagename','$user_p_cont','$post_date')");
+if ($user_p_cont || $user_p_imagename) {
+    $upostinsert =  mysqli_query($connect, "INSERT INTO user_post(puser_name,user_image,post_image,user_post,post_date) VALUES('$p_user_name','$p_user_image','$user_p_imagename','$user_p_cont','$post_date')");
 
     header('location: ../Pages/Home.php');
-
 }
