@@ -2,11 +2,11 @@
 		<a class="item sidebar-toggle white">
 			<i class="sidebar icon"></i> Menu
 		</a>
-		<div class="ui right floated simple dropdown item">Saeid
+		<div class="ui right floated simple dropdown item">Muhammad Saeid
 			<i class="dropdown icon"></i>
 			<div class="menu">
-				<a href="#" class="item"><i class="setting icon"></i>Edit your profile</a>
-				<a href="#" class="item"><i class="sign out icon"></i>Logout</a>
+				<!-- <a href="" class="item"><i class="setting icon"></i>Edit your profile</a> -->
+				<a href="../inc/Logout.php" class="item"><i class="sign out icon"></i>Logout</a>
 			</div>
 		</div>
 

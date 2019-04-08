@@ -34,14 +34,39 @@ $('input:file', '.ui.action.input')
     });
 // Signup form profile pic Option End
 
-// Sign In Validation Start
 $(document)
     .ready(function () {
-        $('.ui.form.signin')
+        $('.ui.form')
             .form({
                 fields: {
+                    firstname: {
+                        identifier: 'firstname',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'Please enter your first name'
+                        }]
+                    },
+                    surname: {
+                        identifier: 'lastname',
+                        rules: [{
+                            type: 'empty',
+                            prompt: 'Please enter your last name'
+                        }]
+                    },
                     email: {
-                        identifier: 'email',
+                        identifier: 'buemail',
+                        rules: [{
+                                type: 'empty',
+                                prompt: 'Please enter your e-mail'
+                            },
+                            {
+                                type: 'email',
+                                prompt: 'Please enter a valid e-mail'
+                            },
+                        ]
+                    },
+                    emailid: {
+                        identifier: 'emailid',
                         rules: [{
                                 type: 'empty',
                                 prompt: 'Please enter your e-mail'
@@ -63,45 +88,9 @@ $(document)
                                 prompt: 'Your password must be at least 6 characters'
                             }
                         ]
-                    }
-                }
-            });
-    });
-// Sign In Validation End
-// Sign Up Validation Start
-$(document)
-    .ready(function () {
-        $('.ui.form')
-            .form({
-                fields: {
-                    firstname: {
-                        identifier: 'firstname',
-                        rules: [{
-                            type: 'empty',
-                            prompt: 'Please enter your first name'
-                        }]
                     },
-                    surname: {
-                        identifier: 'surname',
-                        rules: [{
-                            type: 'empty',
-                            prompt: 'Please enter your last name'
-                        }]
-                    },
-                    email: {
-                        identifier: 'email',
-                        rules: [{
-                                type: 'empty',
-                                prompt: 'Please enter your e-mail'
-                            },
-                            {
-                                type: 'email',
-                                prompt: 'Please enter a valid e-mail'
-                            },
-                        ]
-                    },
-                    password: {
-                        identifier: 'password',
+                    repassword: {
+                        identifier: 'repassword',
                         rules: [{
                                 type: 'empty',
                                 prompt: 'Please enter your password'
@@ -148,7 +137,7 @@ $(document)
                         }]
                     },
                     ProfilePic: {
-                        identifier: 'ppic',
+                        identifier: 'profilepic',
                         rules: [{
                             type: 'empty',
                             prompt: 'Please upload your Profile Picture'

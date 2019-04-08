@@ -1,4 +1,13 @@
-<?php session_start();  ?>
+<?php
+session_start();
+
+if (!isset($_SESSION['user_email'])) {
+	header('location: ../index.php');
+};
+
+$full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,7 +29,7 @@
 			top: 0px !important;
 		}
 
-		a.item.profileItem:hover {
+		.ui.secondary.inverted.menu .dropdown.item:hover {
 			background: transparent !important;
 		}
 	</style>
@@ -38,7 +47,7 @@
 				<div class="ui large vertical menu">
 					<a class="item">
 						<div class="ui small teal label">1</div>
-						Inbox
+						menu
 					</a>
 					<a class="item">
 						<div class="ui small label">51</div>
@@ -59,10 +68,8 @@
 			<div class="ui eight wide column ">
 
 				<div class="ui grid segment mt0">
-					<div class="six wide column"><img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg"
-							alt="" style="height:35px;"></div>
-					<div class="ten wide column right aligned"><button class="ui button teal create_btn" type="button"
-							id="postForm">Create Post</button>
+					<div class="six wide column"><img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="" style="height:35px;"></div>
+					<div class="ten wide column right aligned"><button class="ui button teal create_btn" type="button" id="postForm">Create Post</button>
 						<button class="ui button blue create_btn" type="button" id="noticeBoardForm">Write a
 							Notice</button>
 					</div>
@@ -73,9 +80,8 @@
 						<div class="right floated meta pt5"><span>15 hours ago</span>
 							<!-- <a href=""><i class="icon ellipsis horizontal"></i></a> -->
 						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" alt=""
-							style="height:35px;">
-						<b><?php echo $_SESSION['Firstname']; echo $_SESSION['Email']; ?></b>
+						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" alt="" style="height:35px;">
+						<b> Jahidul Islam</b>
 
 
 
@@ -196,24 +202,24 @@
 				<!-- Model area start -->
 
 				<div class="ui modal">
-					
-						<div class="header ui center aligned">Create Post</div>
-						<div class="content">
-								<form class="ui form">
+
+					<div class="header ui center aligned">Create Post</div>
+					<div class="content">
+						<form class="ui form">
 							<div class="field">
 								<textarea placeholder="What's on your mind, Muhammad?"></textarea>
 							</div>
 
 						</form>
-						</div>
-						<div class="actions">
-							<!-- <div class="ui approve button">Approve</div>
+					</div>
+					<div class="actions">
+						<!-- <div class="ui approve button">Approve</div>
 						<div class="ui button">Neutral</div>
 						<div class="ui cancel button">Cancel</div> -->
-							<!-- <div class="ui cancel button">Cancel</div> -->
-							<button type="submit" class="ui approve button blue">Approve</button>
-						</div>
-					
+						<!-- <div class="ui cancel button">Cancel</div> -->
+						<button type="submit" class="ui approve button blue">Approve</button>
+					</div>
+
 				</div>
 
 				<!-- Model area end -->
@@ -288,17 +294,17 @@
 	<!-- Custom-Js-Files -->
 	<script src="./../Components/Dist/Custom.js"></script>
 	<script>
-		$(function () {
-			$("#noticeBoardForm").click(function () {
+		$(function() {
+			$("#noticeBoardForm").click(function() {
 				$(".ui.modal").modal('show');
 			});
-			$("#postForm").click(function () {
+			$("#postForm").click(function() {
 				$(".ui.modal").modal('show');
 			});
 
 		});
 
-		$(document).ready(function () {
+		$(document).ready(function() {
 			$('.ui.dropdown').dropdown();
 
 			$('.ui.sticky')

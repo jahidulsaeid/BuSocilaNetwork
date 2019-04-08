@@ -1,5 +1,10 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION['admin_email'])) {
+    header('location: ./Pages/index.php');
+}
 
 ?>
 
@@ -55,7 +60,7 @@
 
                     </form>
 
-               
+
                 </div>
             </div>
 

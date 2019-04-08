@@ -19,19 +19,43 @@ $email_select = mysqli_query($connect, "SELECT * FROM user_info WHERE email='$em
 
 $how_many_user = mysqli_num_rows($email_select);
 
+
+// $allowed_domains = array("bu.edu.bd");
+// $email_domain = array_pop(explode("@", $email));
+
+
+
+$allowed_domains = array("bu.edu.bd");
+$buemailverify = explode("@", $email);
+$email_domain = array_pop($buemailverify);
+
+
 if ($firstname && $lastname && $pass && $email && $gender && $birthofday) {
     if ($pass == $repass) {
 
-        if ($how_many_user  >= 1) {
 
-            echo "Vai ai email diye registation kora ase onno email diye try koren";
+        if (!in_array($email_domain, $allowed_domains)) {
+            // Not an authorised email 
+            // echo "This is not bu email";
+            header('location: ../index.php?result=notbuemail');
         } else {
+            
+            if ($how_many_user  >= 1) {
 
-            mysqli_query($connect, "INSERT INTO user_info(fname,sname,pass,email,gender,birthday,ppic)VALUES('$firstname','$lastname','$pass','$email','$gender','$birthofday','$p_pic')");
+                header('location: ../index.php?result=sameemail');
+                // echo "Vai ai email diye registation kora ase onno email diye try koren";
+            } else {
+
+                mysqli_query($connect, "INSERT INTO user_info(fname,sname,pass,email,gender,birthday,ppic)VALUES('$firstname','$lastname','$pass','$email','$gender','$birthofday','$p_pic')");
+
+                header('location: ../index.php?result=successful');
+            }
         }
     } else {
 
-        echo "Pass duita mile nai";
-        // header('location: ../Pages/Error.php');
+        // echo "Pass duita mile nai";
+        header('location: ../index.php?result=passdontmatch');
     }
+} else {
+    header('location: ../index.php?result=fieldempty');
 }

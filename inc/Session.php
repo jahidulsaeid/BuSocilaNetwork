@@ -1,6 +1,6 @@
 <?php
-session_start();
-include('conn.php');
+// session_start();
+// include('conn.php');
 
 $user_select = mysqli_query($connect, "SELECT * FROM user_info");
 
@@ -14,3 +14,6 @@ echo $_SESSION['PassWord'] = $user_data['password'];
 echo $_SESSION['Birthday'] = $user_data['email'];
 echo $_SESSION['gender'] = $user_data['gender'];
 echo $_SESSION['Birthday'] = $user_data['birthday'];
+
+
+$full_name = $_SESSION['Firstname'].' '.$_SESSION['Lastname'];

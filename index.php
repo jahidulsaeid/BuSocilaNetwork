@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+if (isset($_SESSION['user_email'])) {
+    header('location: ./Pages/Home.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,18 +32,17 @@
         <div class="column teal center aligned p60" style="height:102vh;">
 
             <div style="position: absolute;top: 27%;">
-                <img class="ui small image centered" src="./Images/BU.png" alt="">
+                <a href="http://localhost/BuSocilaNetwork/"><img class="ui small image centered" src="./Images/BU.png" alt=""></a> 
 
                 <h1 class="m0" style="font-family: 'Raleway', sans-serif;font-weight:300">Bu Community Network</h1>
                 <h3 class="mt10" style="font-family: 'Raleway', sans-serif;font-weight:300">Lorem ipsum dolor sit, amet
                     consectetur adipisicing elit. Expedita, quod.
                 </h3>
-                <div class="three wide column">
+                <div class="three wide column pt50">
                     <h2 class="ui inverted header" style="font-family: 'Raleway', sans-serif;font-weight:300">Follow us
                     </h2>
                     <div class="ui inverted link list">
-                        <a href="https://www.facebook.com/BangladeshUniversityBd"
-                            class="ui circular facebook icon button" target="_blank">
+                        <a href="https://www.facebook.com/BangladeshUniversityBd" class="ui circular facebook icon button" target="_blank">
                             <i class="facebook icon"></i>
                         </a>
                         <a href="" class="ui circular twitter icon button" target="_blank">
@@ -56,6 +64,30 @@
             <div class="ui middle aligned center aligned grid ">
                 <div class="column p100" style=" position: absolute;top: 15%; right: 0px">
                     <h2 class="ui teal image header">
+                        <?php
+                        if (isset($_GET['result'])) {
+                            if ($_GET['result'] == 'passdontmatch') {
+                                echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Password does not match.</p></div>';
+                            }
+                            if ($_GET['result'] == 'sameemail') {
+                                echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">This email address is already registered.</p></div>';
+                            }
+                            if ($_GET['result'] == 'fieldempty') {
+                                echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Hello, your input field is empty</p></div>';
+                            }
+                            if ($_GET['result'] == 'successful') {
+                                echo '<div class="ui ignored positive message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">SignUp Successful</p></div>';
+                            }
+                            if ($_GET['result'] == 'notbuemail') {
+                                echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">You Must be input Bu Email</p></div>';
+                            }
+                            if ($_GET['result'] == 'wronguser') {
+                                echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Your email and pass do not match Or you are not register member</p></div>';
+                            }
+                        }
+                        ?>
+
+
 
                         <div class="content">
                             <h1 style="font-family: 'Raleway', sans-serif;font-weight:300">Log-in to your account</h1>
@@ -66,13 +98,13 @@
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" placeholder="E-mail address" name="emailid">
+                                    <input type="email" size="64" maxLength="64" placeholder="username@bu.edu.bd" pattern=".+@bu.edu.com" title="Please Enter Bu provided email address" name="emailid" require>
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="lock icon"></i>
-                                    <input type="password" name="password" placeholder="Password">
+                                    <input type="password" name="password" placeholder="Password" require>
                                 </div>
                             </div>
                             <div class="ui fluid large teal submit button">Login</div>
@@ -129,9 +161,7 @@
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input id="emailAddress" type="email" size="64" maxLength="64"
-                                        placeholder="username@bu.edu.com" pattern=".+@bu.edu.com"
-                                        title="Please Enter Bu provided email address" name="buemail">
+                                    <input id="emailAddress" type="email" size="64" maxLength="64" placeholder="username@bu.edu.bd" pattern=".+@bu.edu.bd" title="Please Enter Bu provided email address" name="buemail" require>
                                 </div>
                             </div>
 
@@ -278,6 +308,9 @@
     <script src="./Components/Dist/Custom.js"></script>
 
     <script>
+        $(".close.icon").click(function() {
+            $(this).parent().hide();
+        });
     </script>
 </body>
 
