@@ -1,11 +1,13 @@
-// NoticeBoard Modal start
-$(function () {
-    $("#noticeBoardFrom").click(function () {
-        $(".ui.modal.basic").modal('show');
+// NoticeBoard and post Modal start
+$(function() {
+    $("#noticeBoardForm").click(function() {
+        $(".ui.modal.notice").modal('show');
     });
-
+    $("#postForm").click(function() {
+        $(".ui.modal.post").modal('show');
+    });
 });
-// NoticeBoard Modal end
+// NoticeBoard and post Modal end
 
 // Signin and SignUP Hiding Jquery
 

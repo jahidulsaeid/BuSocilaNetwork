@@ -43,7 +43,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 	<div class="ui grid container">
 
 		<div class="three column row">
-			<div class="four wide column ui secondary segment m0 stickySidebar">
+			<div class="four wide column ui secondary segment m0 stickySidebar computer only">
 				<div class="ui large vertical menu">
 					<a class="item">
 						<div class="ui small teal label">1</div>
@@ -65,7 +65,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 					</div>
 				</div>
 			</div>
-			<div class="ui eight wide column ">
+			<div class="ui eight wide computer sixteen wide mobile tablet column">
 
 				<div class="ui grid segment mt0">
 					<div class="six wide column"><img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="" style="height:35px;"></div>
@@ -75,30 +75,33 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 					</div>
 				</div>
 
+
+
+				<?php
+				
+				
+				include ('../inc/conn.php');
+
+				$post_data = mysqli_query($connect,"SELECT * FROM user_post ORDER BY post_id DESC");
+
+				while($post_slice = mysqli_fetch_array($post_data)):?>
+
 				<div class="ui card fluid">
 					<div class="content">
-						<div class="right floated meta pt5"><span>15 hours ago</span>
-							<!-- <a href=""><i class="icon ellipsis horizontal"></i></a> -->
+						<div class="right floated meta pt5"><span><?php echo $post_slice['post_date']; ?></span>
 						</div>
-						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" alt="" style="height:35px;">
-						<b> Jahidul Islam</b>
+						<img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $post_slice['user_image']; ?>" alt="" style="height:35px;">
+						<b> <?php echo $post_slice['puser_name']; ?></b>
 
 
 
 						<div class="description pt10" style="font-weight:600">
-							<p>Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their
-								adorable
-								faces, others for their tiny stature, and even others for their massive size.Many people
-								also have their own barometers for what makes a cute dog.</p>
+							<p><?php echo $post_slice['user_post']; ?></p>
 						</div>
-
-
-
-
 					</div>
 
 					<div class="image">
-						<img src="./../Images/muhammadsaeid.jpg" alt="">
+						<img src="./../Images/Postimage/<?php echo $post_slice['post_image']; ?>" alt="">
 					</div>
 					<div class="content">
 						<span class="right floated">
@@ -114,8 +117,8 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 						<div class="ui large transparent left icon input">
 							<div class="ui comments mb0">
 								<div class="comment">
-									<a class="avatar">
-										<img src="./../Images/muhammadsaeid.jpg">
+									<a>
+										<img class="ui mini circular image" style="height:35px;" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>">
 									</a>
 								</div>
 							</div>
@@ -123,6 +126,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 						</div>
 					</div>
 				</div>
+	<?php endwhile;?>
 
 
 				<div class="ui comments">
@@ -171,7 +175,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 										<span class="date">Just now</span>
 									</div>
 									<div class="text">
-										Elliot you are always so right :)
+										Elliot you are always so right :
 									</div>
 									<div class="actions">
 										<a class="reply">Reply</a>
@@ -201,35 +205,68 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 				<!-- Model area start -->
 
-				<div class="ui modal">
+				<div class="ui modal post p20">
+					<form class="ui form" action="../inc/userpost.php" method="POST" enctype="multipart/form-data">
+						<div class="header ui center aligned">Create Post</div>
+						<div class="content">
+							<!-- <form class="ui form"> -->
+							<div class="field ">
+								<div class="ui action input">
+									<input type="text" placeholder="Add Media" readonly name="userpimg">
+									<input type="file" style="display:none;" name="userpimg">
+								</div>
+							</div>
+							<div class="field">
+								<textarea placeholder="What's on your mind, Muhammad?" name="upostcontent"></textarea>
+							</div>
+						
+						</div>
+					
+					<div class="actions pr0 pt10">
+						<div class="ui cancel button right floated">Cancel</div>
+						<button type="submit" class="ui submit button blue right floated">Post</button>
+					</div>
+					</form>
+				</div>
 
-					<div class="header ui center aligned">Create Post</div>
+				<div class="ui modal notice">
+					<div class="header ui center aligned">Post a Notice</div>
 					<div class="content">
 						<form class="ui form">
+							<div class="field ">
+								<div class="ui action input">
+									<!-- <span class="pt10 pr5">Profile Pic : </span> -->
+									<input type="text" placeholder="Add Media" readonly name="profilepic">
+									<input type="file" style="display:none;" name="profilepic">
+								</div>
+							</div>
+							<div class="field ">
+								<div class="ui action input">
+									<!-- <span class="pt10 pr5">Profile Pic : </span> -->
+									<input type="text" placeholder="Add Media" readonly name="profilepic">
+									<input type="file" style="display:none;" name="profilepic">
+								</div>
+							</div>
 							<div class="field">
 								<textarea placeholder="What's on your mind, Muhammad?"></textarea>
 							</div>
-
 						</form>
 					</div>
+					</form>
 					<div class="actions">
-						<!-- <div class="ui approve button">Approve</div>
-						<div class="ui button">Neutral</div>
-						<div class="ui cancel button">Cancel</div> -->
-						<!-- <div class="ui cancel button">Cancel</div> -->
-						<button type="submit" class="ui approve button blue">Approve</button>
+						<div class="ui cancel button">Cancel</div>
+						<button type="submit" class="ui approve button blue">Post</button>
 					</div>
-
 				</div>
 
 				<!-- Model area end -->
 
 			</div>
-			<div class="four wide column ui secondary segment m0 stickySidebar">
+			<div class="four wide column ui secondary segment m0 stickySidebar computer only">
 				<div class="ui middle aligned selection list">
 					<div class="item">
 						<div class="right floated content">
-							<div class="ui button">Add</div>
+							<div class="ui button">Follow</div>
 						</div>
 						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
@@ -238,7 +275,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 					</div>
 					<div class="item">
 						<div class="right floated content">
-							<div class="ui button">Add</div>
+							<div class="ui button">Follow</div>
 						</div>
 						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
@@ -247,7 +284,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 					</div>
 					<div class="item">
 						<div class="right floated content">
-							<div class="ui button">Add</div>
+							<div class="ui button">Follow</div>
 						</div>
 						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
@@ -256,7 +293,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 					</div>
 					<div class="item">
 						<div class="right floated content">
-							<div class="ui button">Add</div>
+							<div class="ui button">Follow</div>
 						</div>
 						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
@@ -265,7 +302,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 					</div>
 					<div class="item">
 						<div class="right floated content">
-							<div class="ui button">Add</div>
+							<div class="ui button">Follow</div>
 						</div>
 						<img class="ui mini circular image" src="./../Images/muhammadsaeid.jpg" style="height:35px;">
 						<div class="content">
@@ -294,30 +331,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 	<!-- Custom-Js-Files -->
 	<script src="./../Components/Dist/Custom.js"></script>
 	<script>
-		$(function() {
-			$("#noticeBoardForm").click(function() {
-				$(".ui.modal").modal('show');
-			});
-			$("#postForm").click(function() {
-				$(".ui.modal").modal('show');
-			});
 
-		});
-
-		$(document).ready(function() {
-			$('.ui.dropdown').dropdown();
-
-			$('.ui.sticky')
-				.sticky({
-					context: '#example3'
-				});
-		});
-		// $(document).ready(function () {
-		// 	$('.ui.sticky')
-		// 		.sticky({
-		// 			context: '#example3'
-		// 		});
-		// });
 	</script>
 
 </body>
