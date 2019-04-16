@@ -3,7 +3,7 @@
         <a class="item" href="http://localhost/BuSocilaNetwork/">
             Home
         </a>
-
+<!-- 
         <a class="item">
             <i class="icon users"></i> Friends
             <div class="floating ui teal label">22</div>
@@ -15,11 +15,11 @@
         <a class="item">
             <i class="icon bell"></i> Notification
             <div class="floating ui orange label">22</div>
-        </a>
-        <a class="item">
+        </a> -->
+        <a class="item" href="./notice.php">
             NoticeBorad
         </a>
-        <a class="item">
+        <a class="item" href="./contact.php">
             Contact us
         </a>
 
@@ -34,6 +34,7 @@
                     <i class="dropdown icon"></i>
                 </a>
                 <div class="menu">
+                    <a class="item" href="">Basic info</a>
                     <a class="item" href="../inc/Logout.php">Logout</a>
                 </div>
             </div>

@@ -76,7 +76,7 @@ if (isset($_SESSION['user_email'])) {
                                 echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Hello, your input field is empty</p></div>';
                             }
                             if ($_GET['result'] == 'successful') {
-                                echo '<div class="ui ignored positive message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">SignUp Successful</p></div>';
+                                echo '<div class="ui ignored positive message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Successfully signup waiting for admin approva </p></div>';
                             }
                             if ($_GET['result'] == 'notbuemail') {
                                 echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">You Must be input Bu Email</p></div>';

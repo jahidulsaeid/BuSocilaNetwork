@@ -118,7 +118,6 @@ if (isset($_SESSION['admin_email'])) {
                     });
             });
 
-        // Sign in Form End
     </script>
 </body>
 

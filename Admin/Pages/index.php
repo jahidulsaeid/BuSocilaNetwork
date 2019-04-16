@@ -10,7 +10,6 @@ if (!isset($_SESSION['admin_email'])) {
 <html>
 
 <head>
-	<!-- <title>Admin Template</title> -->
 	<title> </title>
 	<link rel="stylesheet" href="./../../Components/Dist/semantic.min.css">
 	<link rel="stylesheet" type="text/css" href="./../css/custom.css">
@@ -27,15 +26,15 @@ if (!isset($_SESSION['admin_email'])) {
 			<div class="ui basic segment">
 				<h3 class="ui header">Bu Social Community</h3>
 				<h3 class="ui header">
-					<?php 
-				// echo $_SESSION['admin_email']
-				// .' '.$_SESSION['admin_pass']; 
-				?></h3>
+					<?php
+					// echo $_SESSION['admin_email']
+					// .' '.$_SESSION['admin_pass']; 
+					?></h3>
 				<!-- content -->
 				<table class="ui celled striped table">
 					<thead>
 						<tr>
-							<th class="center aligned" colspan="8">User Information</th>
+							<th class="center aligned" colspan="9">User Information</th>
 						</tr>
 						<tr>
 							<th width="40">ID</th>
@@ -46,39 +45,66 @@ if (!isset($_SESSION['admin_email'])) {
 							<th>Birth Of Day</th>
 							<th>Profile Pic</th>
 							<th>Delete</th>
+							<th>Approve Status</th>
 						</tr>
 					</thead>
 
-<?php
+					<?php
 
-include ('../../inc/conn.php');
+					include('../../inc/conn.php');
 
-$user_data = mysqlI_query($connect,"SELECT * FROM user_info");
+					$user_data = mysqlI_query($connect, "SELECT * FROM user_info");
 
-while($user_slice = mysqli_fetch_array($user_data)): ?>
+					while ($user_slice = mysqli_fetch_array($user_data)) : ?>
 
-					<tbody>
-						<tr>
-							<td><?php echo $user_slice['id'];?></td>
-							<td><?php echo $user_slice['fname'].' '.$user_slice['sname']; ?></td>
-							<td><?php echo $user_slice['email']; ?></td>
-							<td><?php echo $user_slice['pass']; ?></td>
-							<td><?php echo $user_slice['gender']; ?></td>
-							<td><?php echo $user_slice['birthday']; ?></td>
-							<td>
-								<img class="ui avatar image" src="./../../Images/Profilepic/<?php echo $user_slice['ppic']; ?>" alt="">
-							</td>
-							<td>
-								<!-- <a href='../inc/Delete.php?id=<?php echo $user_slice['id'];?>'><i class="trash icon" title="Hapus"></i></a> -->
-								<a href='../inc/Delete.php?id=<?php echo $user_slice['id'];?>'><i class="trash icon" title="Hapus"></i></a>
-							</td>
-						</tr>
-					</tbody>
+						<tbody>
+							<tr>
+								<td><?php echo $user_slice['id']; ?></td>
+								<td><?php echo $user_slice['fname'] . ' ' . $user_slice['sname']; ?></td>
+								<td><?php echo $user_slice['email']; ?></td>
+								<td><?php echo $user_slice['pass']; ?></td>
+								<td><?php echo $user_slice['gender']; ?></td>
+								<td><?php echo $user_slice['birthday']; ?></td>
+								<td>
+									<img class="ui avatar image" src="./../../Images/Profilepic/<?php echo $user_slice['ppic']; ?>" alt="">
+								</td>
+								<td>
+									<a href='../inc/Delete.php?id=<?php echo $user_slice['id']; ?>'><i class="trash icon" title="Hapus"></i></a>
+								</td>
 
-<?php endwhile;?>
+								<!-- asdaf -->
+								<td>
+									<?php
+									$email = $user_slice['email'];
+									$email_select = mysqli_query($connect, "SELECT * FROM valid_user_info WHERE email='$email'");
+
+									$how_many_user = mysqli_num_rows($email_select);
+
+									if ($how_many_user >= 1) {
+										echo "Approved";
+									} else {
+										echo "<a href=\"../inc/Userrequest.php?id=$user_slice[id]\"><i class='check icon'></i></a>";
+									}
+
+									?>
+
+								</td>
+
+								<!-- asdfa -->
+							</tr>
+						</tbody>
+
+
+
+						<!-- Modal area -->
+
+						<!-- Modal End -->
+
+					<?php endwhile; ?>
+
 					<tfoot>
 						<tr>
-							<th colspan="8">
+							<th colspan="9">
 								<div class="ui right floated pagination menu">
 									<a class="icon item"><i class="left chevron icon"></i></a>
 									<a class="item">1</a>
@@ -95,11 +121,14 @@ while($user_slice = mysqli_fetch_array($user_data)): ?>
 
 		</div>
 	</div>
-	<!-- </div> -->
+
+
 
 	<script src="./../../Components/Dist/Jquery-3.1.1.min.js"></script>
 	<script src="./../../Components/Dist/semantic.min.js"></script>
 	<script type="text/javascript" src="./../js/custom.js"></script>
+	<script>
+	</script>
 </body>
 
 </html>

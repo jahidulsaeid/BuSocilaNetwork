@@ -5,7 +5,7 @@ include('conn.php');
 $useremail = $_POST['emailid'];
 $pass = $_POST['password'];
 
-$user_select = mysqli_query($connect, "SELECT * FROM user_info WHERE email='$useremail' AND pass='$pass'");
+$user_select = mysqli_query($connect, "SELECT * FROM valid_user_info WHERE email='$useremail' AND pass='$pass'");
 
 $koytauser = mysqli_num_rows($user_select);
 

@@ -21,7 +21,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 	<!-- margin-padding min css -->
 	<link rel="stylesheet" href="./../Components/Dist/margin.padding.min.css">
 	<!-- Custom Css -->
-	<link rel="stylesheet" href="./Home.css">
+	<link rel="stylesheet" href="../style.css">
 	<style>
 		.stickySidebar {
 			height: 665px !important;
@@ -44,26 +44,40 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 		<div class="three column row">
 			<div class="four wide column ui secondary segment m0 stickySidebar computer only">
-				<div class="ui large vertical menu">
-					<a class="item">
-						<div class="ui small teal label">1</div>
-						menu
-					</a>
-					<a class="item">
-						<div class="ui small label">51</div>
-						Spam
-					</a>
-					<a class="item active">
-						<div class="ui small label">1</div>
-						Updates
-					</a>
-					<div class="item">
-						<div class="ui icon input">
-							<input type="text" placeholder="Search mail...">
-							<i class="search icon"></i>
-						</div>
+				<div>
+					<img class="ui centered image tiny circular" style="height:80px;" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="">
+					<div class="ui center aligned grid pt30">
+						<h3><?php echo $full_name; ?></h3>
+						<p style="text-align:center; ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptas aperiam, accusamus eos</p>
+						<p style="text-align:center; ">Student</p>
+						<p style="text-align:center; "><i class="envelope outline icon"></i>muhammadsaeid@gmail.com</p>
 					</div>
 				</div>
+				<div class="ui vertical menu fluid secondary pl20 leftmenu pt30">
+					<div class="item">
+						<a class="header" href="#"><i class="home icon"></i>Home</a>
+					</div>
+					<div class="item">
+						<a class="header" href="#"><i class="clipboard list icon"></i>Notice Board</a>
+					</div>
+					<div class="item">
+						<a class="header" href="#"><i class="user icon"></i>User Profile</a>
+					</div>
+					<div class="item">
+						<a class="header" href="#"><i class="clipboard list icon"></i>Users</a>
+					</div>
+					<div class="item">
+						<a class="header" href="#"><i class="clipboard list icon"></i>Help</a>
+					</div>
+					<div class="item">
+						<a class="header" href="#"><i class="lock icon"></i>Logout</a>
+					</div>
+				</div>
+				<p style="text-align:center;" class="pt20">BuSocilaNetwork © 2019</p>
+
+
+
+
 			</div>
 			<div class="ui eight wide computer sixteen wide mobile tablet column">
 
@@ -234,27 +248,27 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 			$alluser = mysqli_query($connect, "SELECT * FROM user_info ORDER BY id DESC");
 
+			// $alluserslice = mysqli_fetch_array($alluser);
 			?>
-
-
-
 
 			<div class="four wide column ui secondary segment m0 stickySidebar computer only">
 				<div class="ui middle aligned selection list">
-				<?php while ($alluserslice = mysqli_fetch_array($alluser)) : ?>
-					<div class="item">
-					
-						<div class="right floated content">
-							<div class="ui button"><i class="plus icon mr0"></i></div>
-						</div>
-					
-							<img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $alluserslice['ppic']; ?>" style="height:35px;">
-							<div class="content">
-								<div class="header"><?php echo $alluserslice['fname'] . ' ' . $alluserslice['sname']; ?></div>
+					<h4 style="text-align:center">Suggestions For You</h4>
+					<?php while ($alluserslice = mysqli_fetch_array($alluser)) : ?>
+						<div class="item">
+
+							<div class="right floated content">
+								<div class="ui button"><i class="plus icon mr0"></i></div>
 							</div>
 
-						
-					</div>
+							<img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $alluserslice['ppic']; ?>" style="height:35px;">
+							<div class="content">
+								<div class="header"><?php echo $alluserslice['fname'] . ' ' . $alluserslice['sname']; ?>
+								</div>
+							</div>
+
+
+						</div>
 					<?php endwhile; ?>
 				</div>
 			</div>
