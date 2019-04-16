@@ -83,7 +83,7 @@ if (!isset($_SESSION['admin_email'])) {
 									if ($how_many_user >= 1) {
 										echo "Approved";
 									} else {
-										echo "<a href=\"../inc/Userrequest.php?id=$user_slice[id]\"><i class='check icon'></i></a>";
+										echo "<a class='mini ui button' href=\"../inc/Userrequest.php?id=$user_slice[id]\">Not Approve</a>";
 									}
 
 									?>

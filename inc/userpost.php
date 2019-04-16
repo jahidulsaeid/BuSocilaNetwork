@@ -23,5 +23,5 @@ if ($user_p_cont || $user_p_imagename) {
 
     header('location: ../Pages/Home.php');
 }else{
-    echo "All empty";
+    header('location: ../Pages/Home.php');
 }

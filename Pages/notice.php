@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['user_email'])) {
-	header('location: ../index.php');
+    header('location: ../index.php');
 };
 
 $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
@@ -45,8 +45,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
         <div class="three column row">
             <div class="four wide column ui secondary segment m0 stickySidebar computer only">
                 <div>
-                    <img class="ui centered image tiny circular" style="height:80px;"
-                        src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="">
+                    <img class="ui centered image tiny circular" style="height:80px;" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="">
                     <div class="ui center aligned grid pt30">
                         <h3><?php echo $full_name; ?></h3>
                         <p style="text-align:center; ">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
@@ -83,47 +82,57 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
             </div>
             <div class="ui eight wide computer sixteen wide mobile tablet column">
                 <div class="ui grid segment mt0">
-                    <div class="six wide column"><img class="ui mini circular image"
-                            src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt=""
-                            style="height:35px;"></div>
-                    <div class="ten wide column right aligned"><button class="ui button teal create_btn" type="button"
-                            id="postForm">Create Post</button>
+                    <div class="six wide column"><img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="" style="height:35px;"></div>
+                    <div class="ten wide column right aligned"><button class="ui button teal create_btn" type="button" id="postForm">Create Post</button>
                         <button class="ui button blue create_btn" type="button" id="noticeBoardForm">Write a
                             Notice</button>
                     </div>
                 </div>
 
-                <div class="ui raised card fluid">
-                    <div class="content">
-                        <div class="header">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae,
-                            repudiandae.
-                        </div>
-                        <div class="meta">
-                            <span class="category">Topic : Animals</span>
-                        </div>
-                        <div class="description">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima porro voluptatibus
-                                suscipit molestiae beatae ex sint dolore, consequatur soluta aperiam Lorem ipsum dolor
-                                sit amet consectetur adipisicing elit. Sunt libero sint quo minus rerum laudantium totam
-                                odio voluptate ab, consequuntur repudiandae nisi consequatur at delectus obcaecati quos
-                                incidunt non eum?</p>
-                        </div>
 
+
+
+                <?php
+
+
+                include('../inc/conn.php');
+
+                $notice_data = mysqli_query($connect, "SELECT * FROM notice_post ORDER BY notice_id DESC");
+
+                while ($notice_slice = mysqli_fetch_array($notice_data)) : ?>
+
+
+
+                    <div class="ui raised card fluid">
+                        <div class="content">
+                                <div class="header">
+                                    <?php echo $notice_slice['noticetitle']; ?>
+                                </div>
+                            <div class="meta">
+                                <span class="category">Topic : <?php echo $notice_slice['notictopic']; ?></span>
+                            </div>
+                            <div class="description">
+                                <p><?php echo $notice_slice['noticecont']; ?></p>
+                            </div>
+
+                        </div>
+                        
+                            <div class="image pl10 pr10">
+                                <img src="./../Images/noticeimage/<?php echo $notice_slice['notice_img_name'];?>" alt="">
+                            </div>
+                       
+                        <div class="extra content">
+                            <span class="left floated like pt4">
+                                <i class="calendar alternate outline icon"></i>
+                                <?php echo $notice_slice['notice_date']; ?>
+                            </span>
+                            <span class="right floated star">
+                                <img class="ui avatar image" src="./../Images/Profilepic/<?php echo $notice_slice['n_user_image'] ?>" alt=""> <?php echo $notice_slice['n_user_name'] ?>
+                            </span>
+                        </div>
                     </div>
-                    <div class="image pl10 pr10">
-                        <img src="./../Images/Postimage/12108168_1232696203412928_7414158571324889875_n.jpg">
-                    </div>
-                    <div class="extra content">
-                        <span class="left floated like pt4">
-                            <i class="calendar alternate outline icon"></i>
-                            December 8, 2018
-                        </span>
-                        <span class="right floated star">
-                            <img class="ui avatar image" src="./../Images/Profilepic/muhammadsaeid.jpg" alt="">Jahidul
-                            islam
-                        </span>
-                    </div>
-                </div>
+
+                <?php endwhile; ?>
 
 
                 <!-- Model area start -->
@@ -155,6 +164,8 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
                 <div class="ui modal notice">
                     <div class="header ui center aligned">Post a Notice</div>
                     <div class="content">
+
+
                         <form class="ui form" action="../inc/notice.php" method="POST" enctype="multipart/form-data">
                             <div class="field ">
                                 <input type="text" placeholder="Write Notice Title" name="noticetitle">
@@ -185,6 +196,9 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
                                 <button type="submit" class="ui submit button blue right floated">Post</button>
                             </div>
                         </form>
+
+
+
                     </div>
 
                 </div>
@@ -204,21 +218,20 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
                 <div class="ui middle aligned selection list">
                     <h4 style="text-align:center">Suggestions For You</h4>
                     <?php while ($alluserslice = mysqli_fetch_array($alluser)) : ?>
-                    <div class="item">
+                        <div class="item">
 
-                        <div class="right floated content">
-                            <div class="ui button"><i class="plus icon mr0"></i></div>
-                        </div>
-
-                        <img class="ui mini circular image"
-                            src="./../Images/Profilepic/<?php echo $alluserslice['ppic']; ?>" style="height:35px;">
-                        <div class="content">
-                            <div class="header"><?php echo $alluserslice['fname'] . ' ' . $alluserslice['sname']; ?>
+                            <div class="right floated content">
+                                <div class="ui button"><i class="plus icon mr0"></i></div>
                             </div>
+
+                            <img class="ui mini circular image" src="./../Images/Profilepic/<?php echo $alluserslice['ppic']; ?>" style="height:35px;">
+                            <div class="content">
+                                <div class="header"><?php echo $alluserslice['fname'] . ' ' . $alluserslice['sname']; ?>
+                                </div>
+                            </div>
+
+
                         </div>
-
-
-                    </div>
                     <?php endwhile; ?>
                 </div>
                 <div>

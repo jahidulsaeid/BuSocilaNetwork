@@ -32,5 +32,5 @@ if ($noticecont || $notice_img_name) {
 
     header('location: ../Pages/notice.php');
 }else{
-    echo "All empty";
+    header('location: ../Pages/notice.php');
 }
