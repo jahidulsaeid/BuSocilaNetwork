@@ -1,9 +1,9 @@
 // NoticeBoard and post Modal start
-$(function() {
-    $("#noticeBoardForm").click(function() {
+$(function () {
+    $("#noticeBoardForm").click(function () {
         $(".ui.modal.notice").modal('show');
     });
-    $("#postForm").click(function() {
+    $("#postForm").click(function () {
         $(".ui.modal.post").modal('show');
     });
 });
@@ -151,4 +151,36 @@ $(document)
 // Sign Up Validation End
 $(document).ready(function () {
     $('.ui.dropdown').dropdown();
+});
+
+
+// chatbox popup
+$('.chatboxpopup')
+    .popup({
+        on: 'hover'
+    });
+
+
+////warning from popup
+
+$('.warningnotificationbutton')
+    .popup({
+        popup: $('.warningnotification'),
+        on: 'click'
+    });
+
+
+// chat box fly
+$(function () {
+    $('.chatbutton').click(function () {
+
+        $('.chatarea').transition('slide up');
+        $('.chatbutton').transition('vertical flip');
+
+    });
+
+    $('.chatboxhidesign').click(function () {
+        $('.chatarea').transition('slide up');
+        $('.chatbutton').transition('vertical flip');
+    });
 });

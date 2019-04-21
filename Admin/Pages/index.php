@@ -12,6 +12,7 @@ if (!isset($_SESSION['admin_email'])) {
 <head>
 	<title> </title>
 	<link rel="stylesheet" href="./../../Components/Dist/semantic.min.css">
+	<link rel="stylesheet" href="./../../Components/Dist/margin.padding.min.css">
 	<link rel="stylesheet" type="text/css" href="./../css/custom.css">
 </head>
 
@@ -23,13 +24,23 @@ if (!isset($_SESSION['admin_email'])) {
 	<div class="ui bottom segment">
 
 		<div class="pusher">
+			<?php
+			if (isset($_GET['result'])) {
+				if ($_GET['result'] == 'warningnotsent') {
+					echo '<div class="ui ignored negative message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Something is wrong warning not send</p></div>';
+				}
+				if ($_GET['result'] == 'warningsent') {
+					echo '<div class="ui ignored positive message"><i class="close icon" style="font-size:14px;top:0"></i>  <p style="font-size:14px;margin-top:0;">Warning Send Successfully</p></div>';
+				}
+			}
+			?>
 			<div class="ui basic segment">
-				<h3 class="ui header">Bu Social Community</h3>
-				<h3 class="ui header">
-					<?php
-					// echo $_SESSION['admin_email']
-					// .' '.$_SESSION['admin_pass']; 
-					?></h3>
+
+				<h3 class="ui header" style="display:inline-block;"><a href="http://localhost/BuSocilaNetwork/Admin">Bu Social Community</a></h3>
+
+
+				<button class="ui right floated google plus button warningmassage"><i class="envelope icon"></i>Send a warning massage</button>
+
 				<!-- content -->
 				<table class="ui celled striped table">
 					<thead>
@@ -37,7 +48,7 @@ if (!isset($_SESSION['admin_email'])) {
 							<th class="center aligned" colspan="9">User Information</th>
 						</tr>
 						<tr>
-							<th width="40">ID</th>
+							<th width="40">USER ID</th>
 							<th>Name</th>
 							<th>Email</th>
 							<th>Password</th>
@@ -70,6 +81,7 @@ if (!isset($_SESSION['admin_email'])) {
 								</td>
 								<td>
 									<a href='../inc/Delete.php?id=<?php echo $user_slice['id']; ?>'><i class="trash icon" title="Hapus"></i></a>
+
 								</td>
 
 								<!-- asdaf -->
@@ -87,7 +99,6 @@ if (!isset($_SESSION['admin_email'])) {
 									}
 
 									?>
-
 								</td>
 
 								<!-- asdfa -->
@@ -95,10 +106,6 @@ if (!isset($_SESSION['admin_email'])) {
 						</tbody>
 
 
-
-						<!-- Modal area -->
-
-						<!-- Modal End -->
 
 					<?php endwhile; ?>
 
@@ -124,10 +131,44 @@ if (!isset($_SESSION['admin_email'])) {
 
 
 
+
+
+	<!-- Modal area -->
+
+	<div class="ui modal post p20 warningmassagebox">
+		<form class="ui form" action="../inc/warningmassage.php" method="POST" enctype="multipart/form-data">
+			<div class="header ui center aligned">Create Post</div>
+			<div class="content">
+				<!-- <form class="ui form"> -->
+				<div class="field ">
+					<input type="text" name="wmuserid" placeholder="User ID">
+				</div>
+				<div class="field">
+					<textarea placeholder="Type Here what ever you want?" name="upostcontent"></textarea>
+				</div>
+			</div>
+			<div class="actions pr0 pt10">
+				<button type="submit" class="ui submit button blue right floated">Send</button>
+				<div class="ui cancel button right floated">Cancel</div>
+			</div>
+		</form>
+	</div>
+
+	<!-- Modal End -->
+
+
+
 	<script src="./../../Components/Dist/Jquery-3.1.1.min.js"></script>
 	<script src="./../../Components/Dist/semantic.min.js"></script>
 	<script type="text/javascript" src="./../js/custom.js"></script>
 	<script>
+		$(".warningmassage").click(function() {
+			$(".ui.modal.warningmassagebox").modal('show');
+		});
+
+		$(".close.icon").click(function() {
+			$(this).parent().hide();
+		});
 	</script>
 </body>
 
