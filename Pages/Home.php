@@ -67,8 +67,8 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 						<h3><?php echo $full_name; ?></h3>
 						<p style="text-align:center; ">Lorem ipsum dolor sit amet consectetur, adipisicing elit.
 							Voluptas aperiam, accusamus eos</p>
-						<p style="text-align:center; ">Student</p>
-						<p style="text-align:center; "><i class="envelope outline icon"></i>muhammadsaeid@gmail.com</p>
+						<!-- <p style="text-align:center; ">Student</p> -->
+						<p style="text-align:center; "><i class="envelope outline icon"></i><?php echo $_SESSION['user_email']; ?></p>
 					</div>
 				</div>
 				<div class="ui vertical menu fluid secondary pl20 leftmenu pt30">
@@ -302,46 +302,12 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 			<b>Community Chats</b> <i class="icon minus right floated"></i>
 		</div>
 
-		<div class="ui divided items m0" id="chatbox" style="overflow-y: scroll;overflow-x: hidden;height:400px;">
-			<?php
-			// session_start();
-			// include('./conn.php');
-
-			$gchat_data = mysqli_query($connect, "SELECT * FROM groupchat Order BY gchat_id DESC");
-
-			while ($gchat_slice = mysqli_fetch_array($gchat_data)) : ?>
-				<?php if (($_SESSION['user_id']) != $gchat_slice['gc_user_id']) :  ?>
-					<div class="item" style="padding:10px!important; border-top: 0">
-						<!-- <img class="ui avatar image" src="../Images/muhammadsaeid.jpg"> -->
-						<div class="ui chatboxpopup" data-content="<?php echo $gchat_slice['gc_user_name'] ?>"><img style="display:inline-block" class="ui avatar image" src="../Images/Profilepic/<?php echo $gchat_slice['gc_user_image'] ?>" alt=""></div>
-						<div class="left aligned content pl3 pt2">
-							<div id="gchatcont" class="ui left pointing below label chatboxpopup teal" data-content="<?php echo $gchat_slice['gchat_date'] ?>">
-								<?php echo $gchat_slice['gchat_cont'] ?>
-							</div>
-						</div>
-					</div>
-				<?php endif; ?>
-				<?php if (($_SESSION['user_id']) == $gchat_slice['gc_user_id']) :  ?>
-					<div class="item" style="padding:10px!important; border-top: 0">
-						<div class="right aligned content pl3 pt2">
-							<div class="ui right pointing below label blue chatboxpopup" data-content="<?php echo $gchat_slice['gchat_date'] ?>">
-								<?php echo $gchat_slice['gchat_cont'] ?>
-
-								<div id="user_details"></div>
-							</div>
-						</div>
-						<div class="ui chatboxpopup" data-content="<?php echo $gchat_slice['gc_user_name'] ?>"><img style="display:inline-block" class="ui avatar image" src="../Images/Profilepic/<?php echo $gchat_slice['gc_user_image'] ?>" alt=""></div>
-					</div>
-				<?php endif; ?>
-
-			<?php endwhile; ?>
-
-		</div>
+		<div id="chat" class="ui divided items m0 chatboxclass" style="overflow:auto;height:400px!important;"></div>
 		<div class="extra content">
-			<form action="../inc/groupchat.php" id="gchatform" onsubmit="return false">
+			<form method="POST" id="gchatform" class="massageform">
 				<div class="ui small transparent left icon input">
 					<img class="ui avatar image" src="./../Images/Profilepic/<?php echo $_SESSION['user_ppic'] ?>" alt="">
-					<input style="padding-left:5px!important;" id="gchatcont" type="text" autocomplete="off" placeholder="Type a message..." name="gchatcont">
+					<input style="padding-left:5px!important;" id="massageinput" type="text" autocomplete="off" placeholder="Type a message..." name="gchatcont">
 				</div>
 			</form>
 		</div>
@@ -366,63 +332,68 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 	<!-- Custom-Js-Files -->
 	<script src="./../Components/Dist/Custom.js"></script>
 	<script type="text/javascript">
-		$(document).ready(function ajax() {
-			$("#gchatform").submit(function(e) {
+		LoadChat();
 
-				e.preventDefault();
 
-				var form = $(this);
-				var url = form.attr('action');
+		setInterval(function() {
 
-				$.ajax({
-					type: "POST",
-					url: url,
-					delay: 1500,
-					data: form.serialize(),
-					success: function(response, textStatus, jqXHR) {
-						$('#gchatform')[0].reset();
-						$("#chatbox").html(data);
-					},
-					error: function(jqXHR, textStatus, errorThrown) {
-						console.log('error(s):' + textStatus, errorThrown);
-					}
-				});
+			LoadChat();
+
+		}, 1000);
+
+
+		function LoadChat() {
+			$.post('../inc/handlers/messages.php?action=getMessages', function(response) {
+
+				var scrollpos = $('#chat').scrollTop();
+				var scrollpos = parseInt(scrollpos) + 420;
+				var scrollHeight = $('#chat').prop('scrollHeight');
+
+				$('#chat').html(response);
+
+				if (scrollpos < scrollHeight) {
+
+				} else {
+					$('#chat').scrollTop($('#chat').prop('scrollHeight'));
+				}
+
+			});
+		}
+
+
+
+
+
+		// var messageBody = document.querySelector('#chat');
+		// messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
+
+
+		$('#chat').scrollTop($('#chat')[0].scrollHeight);
+
+
+
+
+
+
+		$('#gchatform').submit(function() {
+
+			var message = $('#massageinput').val();
+
+			$.post('../inc/handlers/messages.php?action=sendMessage&message=' + message, function(response) {
+
+				if (response == 1) {
+					// LoadChat();
+					document.getElementById('gchatform').reset();
+				}
 
 			});
 
-		});
+			return false;
 
+		});
 	</script>
 
 
-
-	<!-- <script type="text/javascript">
-		function ajax() {
-
-			var req = new XMLHttpRequest();
-
-			req.onreadystatechange = function() {
-
-				if (req.readyState == 4 && req.status == 200) {
-
-					document.getElementById('chatbox').innerHTML = req.responseText;
-				}
-			}
-			req.open('GET', '../inc/gchatnumrows.php', true);
-			req.send();
-
-			// var chatbox = document.querySelector('#chatbox');
-			// chatbox.scrollTop = chatbox.scrollHeight - chatbox.clientHeight;
-
-			$("#chatbox").animate({
-				scrollTop: $(document).height()
-			}, "fast");
-
-		}
-		setInterval(function() {
-			ajax()
-		}, 1000000);
-	</script> -->
 
 
 </body>

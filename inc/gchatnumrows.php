@@ -1,6 +1,6 @@
 <?php
-session_start();
-include('./conn.php');
+// session_start();
+// include('./conn.php');
 
 $gchat_data = mysqli_query($connect, "SELECT * FROM groupchat");
 
