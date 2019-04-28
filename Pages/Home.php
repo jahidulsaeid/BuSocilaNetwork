@@ -343,7 +343,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 
 		function LoadChat() {
-			$.post('../inc/handlers/messages.php?action=getMessages', function(response) {
+			$.post('./messages.php?action=getMessages', function(response) {
 
 				var scrollpos = $('#chat').scrollTop();
 				var scrollpos = parseInt(scrollpos) + 420;
@@ -379,7 +379,7 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 			var message = $('#massageinput').val();
 
-			$.post('../inc/handlers/messages.php?action=sendMessage&message=' + message, function(response) {
+			$.post('./messages.php?action=sendMessage&message=' + message, function(response) {
 
 				if (response == 1) {
 					// LoadChat();

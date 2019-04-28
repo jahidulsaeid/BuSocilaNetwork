@@ -1,6 +1,6 @@
 <?php
 
-include('../pdoconn.php');
+include('./pdoconn.php');
 
 switch ($_REQUEST['action']) {
 
