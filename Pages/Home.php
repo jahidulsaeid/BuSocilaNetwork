@@ -343,43 +343,29 @@ $full_name = $_SESSION['user_fname'] . ' ' . $_SESSION['user_lname'];
 
 
 		function LoadChat() {
-			$.post('./messages.php?action=getMessages', function(response) {
+			$.post('../inc/messages.php?action=getMessages', function(response) {
+
 
 				var scrollpos = $('#chat').scrollTop();
-				var scrollpos = parseInt(scrollpos) + 420;
+				var scrollpos = parseInt(scrollpos) + 405;
 				var scrollHeight = $('#chat').prop('scrollHeight');
-
 				$('#chat').html(response);
-
 				if (scrollpos < scrollHeight) {
-
+				
 				} else {
 					$('#chat').scrollTop($('#chat').prop('scrollHeight'));
 				}
 
+				// $('#chat').scrollTop($('#chat').prop('scrollHeight'));
 			});
 		}
-
-
-
-
-
-		// var messageBody = document.querySelector('#chat');
-		// messageBody.scrollTop = messageBody.scrollHeight - messageBody.clientHeight;
-
-
-		$('#chat').scrollTop($('#chat')[0].scrollHeight);
-
-
-
-
 
 
 		$('#gchatform').submit(function() {
 
 			var message = $('#massageinput').val();
 
-			$.post('./messages.php?action=sendMessage&message=' + message, function(response) {
+			$.post('../inc/messages.php?action=sendMessage&message=' + message, function(response) {
 
 				if (response == 1) {
 					// LoadChat();

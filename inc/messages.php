@@ -1,6 +1,10 @@
+
 <?php
 
 include('./pdoconn.php');
+
+// define('CSS_PATH', '../Components/Dist/semantic.min.css');
+// define('JS_PATH', '../Components/Dist/semantic.min.js');
 
 switch ($_REQUEST['action']) {
 
@@ -33,28 +37,28 @@ switch ($_REQUEST['action']) {
 		$rs = $query->fetchAll(PDO::FETCH_OBJ);
 		foreach ($rs as $allmassages) :
 			?>
-			<?php if (($_SESSION['user_id']) != $allmassages->gc_user_id) :  ?>
-				<div class="item" style="padding:10px!important; border-top: 0">
-					<div class="ui chatboxpopup" data-content="<?php echo $allmassages->gc_user_name; ?>"><img style="display:inline-block" class="ui avatar image" src="../Images/Profilepic/<?php echo $allmassages->gc_user_image; ?>" alt=""></div>
-					<div class="left aligned content pl3 pt2">
-						<div id="gchatcont" class="ui left pointing below label chatboxpopup teal" data-content="<?php echo $allmassages->gchat_date; ?>">
-							<?php echo $allmassages->gchat_cont; ?>
-						</div>
+		<?php if (($_SESSION['user_id']) != $allmassages->gc_user_id) :  ?>
+			<div class="item" style="padding:10px!important; border-top: 0">
+				<div class="ui chatboxpopup" data-content="<?php echo $allmassages->gc_user_name; ?>"><img style="display:inline-block" class="ui avatar image" src="../Images/Profilepic/<?php echo $allmassages->gc_user_image; ?>" alt=""></div>
+				<div class="left aligned content pl3 pt2">
+					<div id="gchatcont" class="ui left pointing below label chatboxpopup teal" data-content="<?php echo $allmassages->gchat_date; ?>">
+						<?php echo $allmassages->gchat_cont; ?>
 					</div>
 				</div>
-			<?php endif; ?>
-			<?php if (($_SESSION['user_id']) == $allmassages->gc_user_id) :  ?>
-				<div class="item" style="padding:10px!important; border-top: 0">
-					<div class="right aligned content pl3 pt2">
-						<div class="ui right pointing below label blue chatboxpopup" data-content="<?php echo $allmassages->gchat_date; ?>">
-							<?php echo $allmassages->gchat_cont; ?>
+			</div>
+		<?php endif; ?>
+		<?php if (($_SESSION['user_id']) == $allmassages->gc_user_id) :  ?>
+			<div class="item" style="padding:10px!important; border-top: 0">
+				<div class="right aligned content pl3 pt2">
+					<div class="ui right pointing below label blue chatboxpopup" data-content="<?php echo $allmassages->gchat_date; ?>">
+						<?php echo $allmassages->gchat_cont; ?>
 
-							<div id="user_details"></div>
-						</div>
+						<div id="user_details"></div>
 					</div>
-					<div class="ui chatboxpopup" data-content="<?php echo $allmassages->gc_user_name; ?>"><img style="display:inline-block" class="ui avatar image" src="../Images/Profilepic/<?php echo $allmassages->gc_user_image; ?>" alt=""></div>
 				</div>
-			<?php endif; ?>
+				<div class="ui chatboxpopup" data-content="<?php echo $allmassages->gc_user_name; ?>"><img style="display:inline-block" class="ui avatar image" src="../Images/Profilepic/<?php echo $allmassages->gc_user_image; ?>" alt=""></div>
+			</div>
+		<?php endif; ?>
 	<?php
 endforeach;
 break;
